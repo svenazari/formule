@@ -1,11 +1,9 @@
-# formule
+# FORMULE.PY
 
-#FORMULE.PY
-
-#UPUTE ZA KORIŠTENJE:
-##1. Pokrenuti Python3 shell u folderu u kojem se nalazi skripta.
-##2. Unjeti naredbu 'exec(open('formule.py').read())'.
-##3. Upisati 'pomoć ()' za pomoć u korištenju funkcija.
+## UPUTE ZA KORIŠTENJE:
+### 1. Pokrenuti Python3 shell u folderu u kojem se nalazi skripta.
+### 2. Unjeti naredbu 'exec(open('formule.py').read())'.
+### 3. Upisati 'pomoć ()' za pomoć u korištenju funkcija.
 
 #FUNKCIJE:
 
