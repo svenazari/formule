@@ -26,19 +26,19 @@ FIZIKA
     Za veličinu koju se traži upisati "?", a za veličinu koja je nepoznata ili nije potrebna upisati "/" (navodni znakovi su potrebni). NPR., ako se želi izračunati ubrzanje, a poznate su promjena brzine (npr. 2) i promjena vremena (npr. 4) treba upisati: jug ("?",2,"/",4)  
     Korisnik sam treba paziti da si vrijednosti koje unosi međusobno odgovaraju po mjernim jedinicama.  
 
-ohm_zakon (I,U,R):
-Rješava formule za Ohmov zakon.
-I - jakost struje, U - napon, R - otpor
-Za vrijednost koju se traži treba upisati "?" (navodni znakovi su potrebi). NPR., ako se želi izračunati napon, potrebno je upisati ohm_zakon (2,"?",5)
-  *Korisnik sam mora uskladiti mjerne jedinice.
+  ohm_zakon (I,U,R):
+    Rješava formule za Ohmov zakon.
+    I - jakost struje, U - napon, R - otpor
+    Za vrijednost koju se traži treba upisati "?" (navodni znakovi su potrebi). NPR., ako se želi izračunati napon, potrebno je upisati ohm_zakon (2,"?",5)
+    Korisnik sam mora uskladiti mjerne jedinice.
 
 METEO
-vlaga (tt,td):
-Funkcija računa relativnu vlagu zraka.
-tt - temperatura zraka [°C], td - temperatura rosišta [°C]
+  vlaga (tt,td):
+    Funkcija računa relativnu vlagu zraka.
+    tt - temperatura zraka [°C], td - temperatura rosišta [°C]
 
-wbtc (TT,UU,bbb):
-Funkcija računa vrijednost mokre temperature i izražava ju u °C.
-TT - temperatura zraka [°C], UU - relativna vlaga zraka [°C], bbb - tlak zraka na razini postaje [hPa]
-Ako je tlak zraka iznad 1000 hPa, mogu se izostaviti znamenke tisućica i stotica.
+  wbtc (TT,UU,bbb):
+    Funkcija računa vrijednost mokre temperature i izražava ju u °C.
+    TT - temperatura zraka [°C], UU - relativna vlaga zraka [°C], bbb - tlak zraka na razini postaje [hPa]
+    Ako je tlak zraka iznad 1000 hPa, mogu se izostaviti znamenke tisućica i stotica.
 </pre>
