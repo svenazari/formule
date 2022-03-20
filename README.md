@@ -1,3 +1,4 @@
+<pre>
 # FORMULE.PY
 
 UPUTE ZA KORIŠTENJE:
@@ -19,11 +20,11 @@ MATEMATIKA:
     a i b su stranice trokuta, a alfa je kut između njih izražen u stupnjevima (°).  
 
 FIZIKA
-jug (a,v,s,t):
-Rješava formule za jednoliko ubrzano gibanje po pravcu.
-a - ubrzanje, v - brzina ili promjena brzine, s - prijeđeni put ili promjena prijeđenog puta, t - vremenski period
-Za veličinu koju se traži upisati "?", a za veličinu koja je nepoznata ili nije potrebna upisati "/" (navodni znakovi su potrebni). NPR., ako se želi izračunati ubrzanje, a poznate su promjena brzine (npr. 2) i promjena vremena (npr. 4) treba upisati: jug ("?",2,"/",4)
-Korisnik sam treba paziti da si vrijednosti koje unosi međusobno odgovaraju po mjernim jedinicama.
+  jug (a,v,s,t):  
+    Rješava formule za jednoliko ubrzano gibanje po pravcu.  
+    a - ubrzanje, v - brzina ili promjena brzine, s - prijeđeni put ili promjena prijeđenog puta, t - vremenski period  
+    Za veličinu koju se traži upisati "?", a za veličinu koja je nepoznata ili nije potrebna upisati "/" (navodni znakovi su potrebni). NPR., ako se želi izračunati ubrzanje, a poznate su promjena brzine (npr. 2) i promjena vremena (npr. 4) treba upisati: jug ("?",2,"/",4)  
+    Korisnik sam treba paziti da si vrijednosti koje unosi međusobno odgovaraju po mjernim jedinicama.  
 
 ohm_zakon (I,U,R):
 Rješava formule za Ohmov zakon.
@@ -40,3 +41,4 @@ wbtc (TT,UU,bbb):
 Funkcija računa vrijednost mokre temperature i izražava ju u °C.
 TT - temperatura zraka [°C], UU - relativna vlaga zraka [°C], bbb - tlak zraka na razini postaje [hPa]
 Ako je tlak zraka iznad 1000 hPa, mogu se izostaviti znamenke tisućica i stotica.
+</pre>
