@@ -1,24 +1,24 @@
 # formule
 
-FORMULE.PY
+#FORMULE.PY
 
-UPUTE ZA KORIŠTENJE:
-1. Pokrenuti Python3 shell u folderu u kojem se nalazi skripta.
-2. Unjeti naredbu 'exec(open('formule.py').read())'.
-3. Upisati 'pomoć ()' za pomoć u korištenju funkcija.
+#UPUTE ZA KORIŠTENJE:
+##1. Pokrenuti Python3 shell u folderu u kojem se nalazi skripta.
+##2. Unjeti naredbu 'exec(open('formule.py').read())'.
+##3. Upisati 'pomoć ()' za pomoć u korištenju funkcija.
 
-FUNKCIJE:
+#FUNKCIJE:
 
-MATEMATIKA:
-linearna (a,b):
-Daje rješenja linearne jednadžbe.
-a i b su koeficjenti linearne jednadžbe u obliku ax+b=0
-kvadratna (a,b,c):
-Daje rješenja kvadratne jednadžbe.
-a, b i c su koeficjenti kvadratne jednadžbe u obliku ax^2+bx+c=0
-trokut (a,b,alfa):
-Računa vrijednost treće stranice trokuta.
-a i b su stranice trokuta, a alfa je kut između njih izražen u stupnjevima (°).
+#MATEMATIKA:
+##linearna (a,b):
+###Daje rješenja linearne jednadžbe.
+###a i b su koeficjenti linearne jednadžbe u obliku ax+b=0
+##kvadratna (a,b,c):
+###Daje rješenja kvadratne jednadžbe.
+###a, b i c su koeficjenti kvadratne jednadžbe u obliku ax^2+bx+c=0
+##trokut (a,b,alfa):
+###Računa vrijednost treće stranice trokuta.
+###a i b su stranice trokuta, a alfa je kut između njih izražen u stupnjevima (°).
 
 FIZIKA
 jug (a,v,s,t):
