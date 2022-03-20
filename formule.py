@@ -75,6 +75,16 @@ def jug (a,v,s,t): #jednoliko ubrzano gibanje - vrijednost nepoznanica mogu biti
         elif v == "/": #iz ubrzanja
             s1 = str(round(a / 2 * math.pow(t,2),3)) #s=a/2*t^2
             print ("s = " + s1)
+    elif t == "?": #računanje pređenog vremena
+        if s == "/":  #iz ubrzanja i promjene brzine (nepoznati pređeni put)
+            t1 = str(round(a / v,3)) #t=a/v
+            print ("t = " + t1)
+        elif v == "/": #iz pređenog puta i ubrzanja (nepoznata promjena brzine)
+            t1 = str(round(math.sqrt(2 * s / a),3)) #t=(2s/a)^(1/2)
+            print ("t = " + t1)
+        elif a == "/": #iz pređenog puta i brzine ako je v0=0 (nepoznato ubrzanje)
+            t1 = str(round(2 * s / v,3)) #t=2s/v
+            print ("t = " + t1)
 
 
 def ohm_zakon (I,U,R): #ohmov zakon
