@@ -1,6 +1,5 @@
-<pre>
 # FORMULE.PY
-
+<pre>
 UPUTE ZA KORIŠTENJE:
 1. Pokrenuti Python3 shell u folderu u kojem se nalazi skripta.
 2. Unjeti naredbu 'exec(open('formule.py').read())'.
