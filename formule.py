@@ -212,7 +212,7 @@ def wbtc (TT,UU,bbb):
 
 #pomoć
 def pomoć ():
-    print ("Za detaljnije upute pročitati procitaj.txt datoteku.")
+    print ("Za detaljnije upute pročitati procitaj.txt datoteku. Za preuzimanje, upisati preuzmi ()")
     print (" ")
     print ("MATEMATIKA")
     print ("linearna (a,b)")
@@ -230,3 +230,8 @@ def pomoć ():
     print ("METEO")
     print ("vlaga (tt, td)")
     print ("wbtc (TT,UU,bbb)")
+
+def preuzmi ():
+    url="https://raw.githubusercontent.com/svenazari/formule/main/procitaj.txt"
+    r = requests.get(url, allow_redirects=True)
+    open('procitaj.txt', 'wb').write(r.content)
