@@ -146,11 +146,11 @@ def vlaga (tt,td):
 
 def wbtc (TT,UU,bbb):
     if bbb < 70:
-        p = (bbb + 1000) / 10
+        p = (bbb + 1000)
     else:
-        p = bbb / 10
-    for HT in range (-5000, 4000):
-        HTd = HT / 100
+        p = bbb
+    for HT in range (-500, 400):
+        HTd = HT / 10
         e = 2.718282 
         c1 = 6.10780 
         c2 = 17.08085
@@ -164,12 +164,12 @@ def wbtc (TT,UU,bbb):
         if U_test == UU:
             break
     if HTd >= 0:
-        HTa = round(HT / 100,1)
+        HTa = round(HT / 10,1)
         HTap = str (HTa)
         print ("HT = " + HTap)
     else:
-        for HTl in range (-5000, 4000):
-            HTdl = HTl / 100
+        for HTl in range (-500, 400):
+            HTdl = HTl / 10
             e = 2.718282 
             c1 = 6.10780 
             c2 = 17.08085
@@ -185,8 +185,8 @@ def wbtc (TT,UU,bbb):
             U_test_led = round (SVPDTl / SVPTTl * 100)
             if U_test_led == UU:
                 break
-        for HTv in range (-5000, 4000):
-            HTdv = HTv / 100
+        for HTv in range (-500, 400):
+            HTdv = HTv / 10
             e = 2.718282 
             c1 = 6.10780 
             c2 = 17.08085
@@ -202,13 +202,13 @@ def wbtc (TT,UU,bbb):
             U_test_voda = round (SVPDTv / SVPTTv * 100)
             if U_test_voda == UU:
                 break
-            HTal = round (HTl / -100,1)
-            HTav = round (HTv / -100,1)
-            HTalp = str (HTal)
-            HTavp = str (HTav)
-            print ("HT = V" + HTavp + " [L" + HTalp + "]")
-            print ("V - na krpici mokrog termometra je voda")
-            print ("L - na krpici mokrog termometra je led")       
+        HTal = round (HTl / -10,1)
+        HTav = round (HTv / -10,1)
+        HTalp = str (HTal)
+        HTavp = str (HTav)
+        print ("HT = V" + HTavp + " [L" + HTalp + "]")
+        print ("V - na krpici mokrog termometra je voda")
+        print ("L - na krpici mokrog termometra je led")       
 
 #pomoć
 def pomoć ():
