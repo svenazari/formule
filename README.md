@@ -42,3 +42,4 @@ METEO
     Funkcija računa vrijednost mokre temperature i izražava ju u °C.
     TT - temperatura zraka [°C], UU - relativna vlaga zraka [°C], bbb - tlak zraka na razini postaje [hPa]
     Ako je tlak zraka iznad 1000 hPa, mogu se izostaviti znamenke tisućica i stotica.
+
