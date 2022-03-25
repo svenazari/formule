@@ -1,15 +1,26 @@
 #UPUTE ZA KORIŠTENJE:
 #1. Pokrenuti Python3 shell u folderu u kojem se nalazi skripta.
-#2. Unjeti naredbu 'exec(open('formule.py').read())'.
+#2. Pokrenuti naredbu 'exec(open('formule.py').read())'.
 #3. Upisati 'pomoć ()' za pomoć u korištenju funkcija.
 
 #import modula
 import math
 import cmath
 import requests
+import sys
+from os import system, name
 
+#početni tekst
+print ("# FORMULE.py #")
 print ("Autor: Sven Azari")
 print ("Upiši 'pomoć ()' za informacije o naredbama.")
+
+#čišćenje zaslona
+def clear ():
+  if name == 'nt':
+      _ = system('cls')
+  else:
+      _ = system('clear')
 
 #matematika
 def linearna (a,b): #pronalaženje x za linearne jednadžbe sa jednom nepoznanicom (jednadžba treba biti u formatu ax+b=0)
@@ -51,9 +62,18 @@ def trokut (a,b,alfa):
 
 #fizika
 
-#def jpg (v,s,t): #jednoliko pravocrtno gibanje
+def jpg (v,s,t): #jednoliko pravocrtno gibanje
+    if v == "?": #računanje brzine
+        v1 = str(round(s / t,3))
+        print ("v = " + v1)
+    elif s == "?": #računanje prijeđenog puta
+        s1 = str(round(v * t,3))
+        print ("s = " + s1)
+    elif t == "?": #računanje proteklog vremena
+        t1 = str(round(s / v, 3))
+        print ("t = " + t1)
 
-def jug (a,v,s,t): #jednoliko ubrzano gibanje - vrijednost nepoznanica mogu biti ili vrednost veličine ili vrijednost promjene te veličine (DOVRŠITI)
+def jug (a,v,s,t): #jednoliko ubrzano gibanje - vrijednost nepoznanica mogu biti ili vrednost veličine ili vrijednost promjene te veličine
     if a == "?": #računanje ubrzanja
         if s =="/": #iz promjene brzine i promjene vremena (nepoznat pređeni put)
             a1 = str(round(v / t,3)) #a=v/t
@@ -97,6 +117,14 @@ def ohm_zakon (I,U,R): #ohmov zakon
     elif R == "?":
         Rx = str(round(U / I,3))
         print ("R = " + Rx)
+
+#def ziva (ta,lmm,tb):
+#    lm = lmm / 1000 #konverzija stupca žive u metre
+#    lx = lm * 0.0000604 * (tb - ta) #promjena dužine (u metrima)
+#    lx2 = lm + lx #nova visina (u metrima)
+#    lmm2 = round(lx2 * 1000,1) #konverzija nove visine u mm
+#    lmmp = str(lmm2)
+#    print ("Pri novoj temperaturi, visina stupca žive je " + lmmp + " mmHg.")
 
 #meteo
 def vlaga (tt,td):
@@ -145,12 +173,16 @@ def vlaga (tt,td):
     print (Up)
 
 def wbtc (TT,UU,bbb):
-    if bbb < 70:
-        p = (bbb + 1000)
+    if bbb == "/":
+        bbbx = float(1013.3)
     else:
-        p = bbb
-    for HT in range (-500, 400):
-        HTd = HT / 10
+        bbbx = float(bbb)
+    if bbbx < 70:
+        p = (bbbx + 1000)
+    else:
+        p = bbbx
+    for HT in range (-5000, 4000):
+        HTd = HT / 100
         e = 2.718282 
         c1 = 6.10780 
         c2 = 17.08085
@@ -164,12 +196,12 @@ def wbtc (TT,UU,bbb):
         if U_test == UU:
             break
     if HTd >= 0:
-        HTa = round(HT / 10,1)
+        HTa = round(HT / 100,1)
         HTap = str (HTa)
         print ("HT = " + HTap)
     else:
-        for HTl in range (-500, 400):
-            HTdl = HTl / 10
+        for HTl in range (-5000, 4000):
+            HTdl = HTl / 100
             e = 2.718282 
             c1 = 6.10780 
             c2 = 17.08085
@@ -185,8 +217,8 @@ def wbtc (TT,UU,bbb):
             U_test_led = round (SVPDTl / SVPTTl * 100)
             if U_test_led == UU:
                 break
-        for HTv in range (-500, 400):
-            HTdv = HTv / 10
+        for HTv in range (-5000, 4000):
+            HTdv = HTv / 100
             e = 2.718282 
             c1 = 6.10780 
             c2 = 17.08085
@@ -202,13 +234,84 @@ def wbtc (TT,UU,bbb):
             U_test_voda = round (SVPDTv / SVPTTv * 100)
             if U_test_voda == UU:
                 break
-        HTal = round (HTl / -10,1)
-        HTav = round (HTv / -10,1)
+        HTal = round (HTl / -100,1)
+        HTav = round (HTv / -100,1)
         HTalp = str (HTal)
         HTavp = str (HTav)
         print ("HT = V" + HTavp + " [L" + HTalp + "]")
         print ("V - na krpici mokrog termometra je voda")
-        print ("L - na krpici mokrog termometra je led")       
+        print ("L - na krpici mokrog termometra je led")     
+
+def wbtcx (TTx,UU,bbb):
+    TT = TTx / 10
+    if bbb == "/":
+        bbbx = float(1013.3)
+    else:
+        bbbx = float(bbb) / 10
+    if bbbx < 70:
+        p = (bbbx + 1000)
+    else:
+        p = bbbx
+    for HT in range (-5000, 4000):
+        HTd = HT / 100
+        e = 2.718282 
+        c1 = 6.10780 
+        c2 = 17.08085
+        c3 = 234.175
+        expTT = (c2 * TT) / (c3 + TT)
+        SVPTT = c1 * pow (e, expTT) 
+        expHT = (c2 * HTd) / (c3 + HTd)
+        SVPHT = c1 * pow (e, expHT) 
+        SVPDT = SVPHT - (0.000660 * (1 + 0.0015 * HTd)) * p * (TT - HTd) 
+        U_test = round (SVPDT / SVPTT * 100)
+        if U_test == UU:
+            break
+    if HTd >= 0:
+        HTa = round(HT / 10)
+        HTap = str (HTa)
+        print ("HT = " + HTap)
+    else:
+        for HTl in range (-5000, 4000):
+            HTdl = HTl / 100
+            e = 2.718282 
+            c1 = 6.10780 
+            c2 = 17.08085
+            c3 = 234.175
+            cl1 = 6.10714 
+            cl2 = 22.44294
+            cl3 = 272.440
+            expTTl = (c2 * TT) / (c3 + TT)
+            SVPTTl = c1 * pow (e, expTTl) 
+            expHTl = (cl2 * HTdl) / (cl3 + HTdl)
+            SVPHTl = cl1 * pow (e, expHTl) 
+            SVPDTl = SVPHTl - 0.000582 * p * (TT - HTdl) 
+            U_test_led = round (SVPDTl / SVPTTl * 100)
+            if U_test_led == UU:
+                break
+        for HTv in range (-5000, 4000):
+            HTdv = HTv / 100
+            e = 2.718282 
+            c1 = 6.10780 
+            c2 = 17.08085
+            c3 = 234.175
+            cv1 = 6.10780
+            cv2 = 17.84362
+            cv3 = 245.425
+            expTTv = (c2 * TT) / (c3 + TT)
+            SVPTTv = c1 * pow (e, expTTv) 
+            expHTv = (cv2 * HTdv) / (cv3 + HTdv)
+            SVPHTv = cv1 * pow (e, expHTv) 
+            SVPDTv = SVPHTv - (0.000660 * (1 + 0.0015 * HTd)) * p * (TT - HTd) 
+            U_test_voda = round (SVPDTv / SVPTTv * 100)
+            if U_test_voda == UU:
+                break
+        HTal = round (HTl / -10)
+        HTav = round (HTv / -10)
+        HTalp = str (HTal)
+        HTavp = str (HTav)
+        print ("HT = V" + HTavp + " [L" + HTalp + "]")
+        print ("V - na krpici mokrog termometra je voda")
+        print ("L - na krpici mokrog termometra je led")  
 
 #pomoć
 def pomoć ():
@@ -222,6 +325,7 @@ def pomoć ():
     print ("* * * ")
     print (" ")
     print ("FIZIKA")
+    print ("jpg (v,s,t)")
     print ("jug (a,v,s,t)")
     print ("ohm_zakon (I,U,R)")
     print (" ")
@@ -230,8 +334,17 @@ def pomoć ():
     print ("METEO")
     print ("vlaga (tt, td)")
     print ("wbtc (TT,UU,bbb)")
+    print ("wbtcx (TT,UU,bbb) - wbtc bez decimalne točke")
+    print (" ")
+    print ("* * * ")
+    print (" ")
+    print ("clear ()")
+    print ("izl ()")
 
 def preuzmi ():
     url="https://raw.githubusercontent.com/svenazari/formule/main/procitaj.txt"
     r = requests.get(url, allow_redirects=True)
     open('procitaj.txt', 'wb').write(r.content)
+
+def izl ():
+    exit ()
