@@ -11,9 +11,11 @@ MATEMATIKA:
   linearna (a,b):  
     Daje rješenja linearne jednadžbe.  
     a i b su koeficjenti linearne jednadžbe u obliku ax+b=0  
+    
   kvadratna (a,b,c):  
     Daje rješenja kvadratne jednadžbe.  
     a, b i c su koeficjenti kvadratne jednadžbe u obliku ax^2+bx+c=0  
+    
   trokut (a,b,alfa):  
     Računa vrijednost treće stranice trokuta.  
     a i b su stranice trokuta, a alfa je kut između njih izražen u stupnjevima (°).  
@@ -24,6 +26,7 @@ FIZIKA
     v - brzina, s - prijeđeni put, t - vremenski period
     Za veličinu koju se traži upisati "?"
     Korisnik sam treba paziti da si vrijednosti koje unosi međusobno odgovaraju po mjernim jedinicama. 
+    
   jug (a,v,s,t):  
     Rješava formule za jednoliko ubrzano gibanje po pravcu.  
     a - ubrzanje, v - brzina ili promjena brzine, s - prijeđeni put ili promjena prijeđenog puta, t - vremenski period  
@@ -45,6 +48,7 @@ METEO
     Funkcija računa vrijednost mokre temperature i izražava ju u °C.
     TT - temperatura zraka [°C], UU - relativna vlaga zraka [°C], bbb - tlak zraka na razini postaje [hPa]
     Ako je tlak zraka iznad 1000 hPa, mogu se izostaviti znamenke tisućica i stotica.
+    
   wbtcx (TT,UU,bbb)
     Verzija wbtc funkcije u kojoj se vrijednosti unose bez decimalne točke.
 </pre>
