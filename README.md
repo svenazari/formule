@@ -5,6 +5,9 @@ UPUTE ZA KORIŠTENJE:
 2. Unjeti naredbu 'exec(open('formule.py').read())'.
 3. Upisati 'pomoć ()' za pomoć u korištenju funkcija.
 
+Autor: Sven Azari
+http://www.github.com/svenazari
+
 FUNKCIJE:
 
 MATEMATIKA:  
