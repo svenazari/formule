@@ -2,6 +2,9 @@
 #1. Pokrenuti Python3 shell u folderu u kojem se nalazi skripta.
 #2. Pokrenuti naredbu 'exec(open('formule.py').read())'.
 #3. Upisati 'pomoć ()' za pomoć u korištenju funkcija.
+#
+#Autor: Sven Azari
+#http://www.github.com/svenazari
 
 #import modula
 import math
@@ -13,6 +16,7 @@ from os import system, name
 #početni tekst
 print ("# FORMULE.py #")
 print ("Autor: Sven Azari")
+print ("http://www.github.com/svenazari")
 print ("Upiši 'pomoć ()' za informacije o naredbama.")
 
 #čišćenje zaslona
