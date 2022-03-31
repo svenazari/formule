@@ -12,6 +12,7 @@ import cmath
 import requests
 import sys
 from os import system, name
+import readline
 
 #početni tekst
 print ("# FORMULE.py #")
@@ -19,54 +20,115 @@ print ("Autor: Sven Azari")
 print ("http://www.github.com/svenazari")
 print ("Upiši 'pomoć ()' za informacije o naredbama.")
 
-#čišćenje zaslona
-def clear ():
-  if name == 'nt':
-      _ = system('cls')
-  else:
-      _ = system('clear')
+def clear (): #čišćenje zaslona
+    if name == 'nt':
+        _ = system('cls')
+    else:
+        _ = system('clear')
 
 #matematika
-def linearna (a,b): #pronalaženje x za linearne jednadžbe sa jednom nepoznanicom (jednadžba treba biti u formatu ax+b=0)
+def linearna (a,b): #pronalaženje x za linearne jednadžbe sa jednom nepoznanicom (jednadžba treba biti u formatu Ax+B=0)
     if a == 0:
         print ("Nema rješenja! To nije jednadžba sa nepoznanicama!")
     else:
         x = str(round(-b / a,3))
         print ("x = " + x)
 
-def kvadratna (a,b,c): #pronalaženje x za kvadratne jednadžbe sa jednom nepoznanicom (jednadžba treba biti u formatu ax^2+bx+c=0)
+def kvadratna (a,b,c): #pronalaženje x za kvadratne jednadžbe sa jednom nepoznanicom (jednadžba treba biti u formatu Ax^2+Bx+C=0)
     if a == 0: #računanje linearne jednadžbe ukoliko je a = 0
         linearna (b,c)
     else:
         d = math.pow(b,2) - 4 * a * c #diskriminanta
-        if d < 0: #ako je diskriminanta negativna (rješenja su kompleksni brojevi)
+        if d < 0: #diskriminanta je negativna - rješenja su kompleksni brojevi
             ds = cmath.sqrt(d)
             i = str(round(-b / (2 * a),3)) #realni dio kompleknog broja
             z = str(abs(round((ds.imag) / (2 * a),3))*1j) #imaginarni dio kompleksnog broja (samo pozitivna vrijednost)
-        
             #ispis rješenja
             print("x1 = " + i + "+" + z)
             print("x2 = " + i + "-" + z)
-    
-        else: #ako je diskriminanta 0 ili pozitivna
-            ds = math.sqrt(d)
+        elif d == 0: # diskriminanta je 0 - samo jedno rješenje
+            x = str(round((-1 * b) / (2 * a),3))
+            print("x = " + x)
+        else: #diskriminanta je pozitivna - dva rješenja
+            ds = math.sqrt(d) #korijen diskriminante
             x1 = round((-b + ds) / (2 * a),3)
             x1s = str(x1)
             x2 = round((-b - ds) / (2 * a),3)
             x2s = str(x2)
-
             #ispis rješenja
             print("x1 = " + x1s)
             print("x2 = " + x2s)
 
-def trokut (a,b,alfa):
+def dnepoz (z1,a1,b1,c1,z2,a2,b2,c2): #rješavanje jednandžbi sa dvije nepoznanice (format jednadžbi Zy = Ax^2 + Bx + C)
+    if a1 == 0 and a2 == 0: #obje jednadžbe su linearne
+        yr = ((b2 * c1) - (b1 * c2)) / ((b2 * z1) - (b1 * z2)) #y rješenje
+        xr = ((z1 * yr) - c1) / b1 #x rješenje
+        yp = str(round(yr,3))
+        xp = str(round(xr,3))
+        print ("[" + xp + "," + yp + "]")
+    elif a1 != 0 and a2 == 0: #prva jednadžba je kvadratna, a druga je linearna
+        #koeficjenti pomoćne jednandžbe
+        p = -1 * a1 * z2 #a
+        r = b2 * z1 - b1 * z2 #b
+        s = c2 * z1 - c1 * z2 #c
+        #diskriminanta pomoćne jednadžbe
+        q = math.pow(r,2) - 4 * p * s
+        if q < 0 : #diskriminanta negativna - nema rješenja
+            print ("Ovaj sustav jednadžbi nema rješenja!")
+        elif q == 0: #diskriminanta je 0 - postoji samo jedan par rješenja
+            x = round((-1 * r) / (2 * p),3) #x rješenje
+            xs = str(x)
+            y = round(((b2 * x) + c2) / z2,3) #y rješenje
+            ys = str(y)
+            print ("[" + xs + "," + ys + "]")
+        elif q > 0: #diskriminanta je pozitivna - sustav ima dva para rješenja
+            qs = math.sqrt(q) #korijen diskriminante
+            x1 = round(((-1 * r) + qs) / (2 * p),3) #x1 rješenje
+            x2 = round(((-1 * r) - qs) / (2 * p),3) #x2 rješenje
+            x1s = str(x1)
+            x2s = str(x2)
+            y1 = round(((b2 * x1) + c2) / z2,3) #y1 rješenje
+            y2 = round(((b2 * x2) + c2) / z2,3) #y2 rješenje
+            y1s = str(y1)
+            y2s = str(y2)
+            print("[" + x1s + "," + y1s + "]")
+            print("[" + x2s + "," + y2s + "]")
+    else: #obje jednadžbe su kvadratne
+        #koeficjenti pomoćne jednadžbe
+        p = a1 * z2 - a2 * z1 #a
+        r = b1 * z2 - b2 * z1 #b
+        s = c1 * z2 - c2 * z1 #c
+        #diskriminanta pomoćne jednadžbe
+        q = math.pow(r,2) - 4 * p * s
+        if q < 0: # diskriminanta je negativna - nema rješenja
+            print ("Ovaj sustav jednadžbi nema rješenja!")
+        elif q == 0: #diskriminanta je 0 - postoji samo jedan par rješenja
+            x = round((-1 * r) / (2 * p),3) #x rješenje
+            y = round((a2 * math.pow(x,2) + b2 * x + c2) / z2,3) #y rješenje
+            xs = str(x)
+            ys = str(y)
+            print("[" + xs + "," + ys + "]")
+        elif q > 0: #diskriminanta je pozitivna - sustav ima dva para rješenja
+            qs = math.sqrt(q) #korijen diskriminante
+            x1 = round(((-1 * r) + qs) / (2 * p),3) #x1 rješenje
+            x2 = round(((-1 * r) - qs) / (2 * p),3) #x2 rješenje
+            x1s = str(x1)
+            x2s = str(x2)
+            y1 = round((a2 * math.pow(x1,2) + b2 * x1 + c2) / z2,3) #y1 rješenje
+            y2 = round((a2 * math.pow(x2,2) + b2 * x2 + c2) / z2,3) #y2 rješenje
+            y1s = str(y1)
+            y2s = str(y2)
+            print("[" + x1s + "," + y1s + "]")
+            print("[" + x2s + "," + y2s + "]")
+
+def trokut (a,b,alfa): #kosinusov poučak - a i b su stranica, a alfa je kut između te dvije stranice (za pitagorin poučak, za vrijednost kuta upisati 90)
     alfar = alfa * math.pi / 180 #pretvaranje stupnjeva u radijane
     cx = str(round(math.sqrt(math.pow(a,2) + math.pow(b,2) - 2 * a * b * math.cos(alfar)),3)) #kosinusov poučak
     print ("c = " + cx) #ispis rješenja
 
 #fizika
 
-def jpg (v,s,t): #jednoliko pravocrtno gibanje
+def jpg (v,s,t): #jednoliko pravocrtno gibanje (v - brzina, s - put, t - vrijeme)
     if v == "?": #računanje brzine
         v1 = str(round(s / t,3))
         print ("v = " + v1)
@@ -77,7 +139,7 @@ def jpg (v,s,t): #jednoliko pravocrtno gibanje
         t1 = str(round(s / v, 3))
         print ("t = " + t1)
 
-def jug (a,v,s,t): #jednoliko ubrzano gibanje - vrijednost nepoznanica mogu biti ili vrednost veličine ili vrijednost promjene te veličine
+def jug (a,v,s,t): #jednoliko ubrzano gibanje - vrijednost nepoznanica mogu biti ili vrednost veličine ili vrijednost promjene te veličine (a - ubrzanje, v - brzina, s - put, t - vrijeme)
     if a == "?": #računanje ubrzanja
         if s =="/": #iz promjene brzine i promjene vremena (nepoznat pređeni put)
             a1 = str(round(v / t,3)) #a=v/t
@@ -111,14 +173,14 @@ def jug (a,v,s,t): #jednoliko ubrzano gibanje - vrijednost nepoznanica mogu biti
             print ("t = " + t1)
 
 
-def ohm_zakon (I,U,R): #ohmov zakon
-    if I == "?":
+def ohm_zakon (I,U,R): #ohmov zakon (I - jakost struje, U - napon struje, R - električni otpor)
+    if I == "?": #računanje jakosti struje
         Ix = str(round(U / R,3))
         print ("I = " + Ix)
-    elif U == "?":
+    elif U == "?": #računanje napona struje
         Ux = str(round(I * R,3))
         print ("U = " + Ux)
-    elif R == "?":
+    elif R == "?": #računanje električnog otpora
         Rx = str(round(U / I,3))
         print ("R = " + Rx)
 
@@ -131,7 +193,7 @@ def ohm_zakon (I,U,R): #ohmov zakon
 #    print ("Pri novoj temperaturi, visina stupca žive je " + lmmp + " mmHg.")
 
 #meteo
-def vlaga (tt,td):
+def vlaga (tt,td): #računanje relativne vlage zraka iz temperature zraka i temperature rosišta
     #konstante
     e = 2.718282
     #pozitivna temperatura
@@ -142,7 +204,6 @@ def vlaga (tt,td):
     pv1 = 6.10780
     pv2 = 17.84362
     pv3 = 245.425
-    
     if (tt < 0): #koje konstante koristiti za temperaturu zraka
         ctt1 = pv1
         ctt2 = pv2
@@ -151,7 +212,6 @@ def vlaga (tt,td):
         ctt1 = p1
         ctt2 = p2
         ctt3 = p3
-    
     if (td < 0): #koje konstante koristiti za temperaturu rosišta
         ctd1 = pv1
         ctd2 = pv2
@@ -160,23 +220,19 @@ def vlaga (tt,td):
         ctd1 = p1
         ctd2 = p2
         ctd3 = p3
-
     #računanje tlaka zasićene vodene pare za temperaturu zraka
     mitt = ctt2 * tt / (ctt3 + tt)
     SVPTT = ctt1 * math.pow(e,mitt)
-    
     #računanje tlaka zasiće vodene pare za temperaturu rosišta
     mitd = ctd2 * td / (ctd3 + td)
     SVPTD = ctd1 * math.pow(e,mitd)
-    
     #računanje relativne vlage zraka
     U = str (round (SVPTD / SVPTT * 100))
     Up = "U = " + U + "%"
-    
     #ispis rezultata
     print (Up)
 
-def wbtc (TT,UU,bbb):
+def wbtc (TT,UU,bbb): #računanje vrijednosti temperature mokrog termometra iz temperature zraka, relativne vlage zraka i tlaka zraka na razini postaje
     if bbb == "/":
         bbbx = float(1013.3)
     else:
@@ -246,7 +302,7 @@ def wbtc (TT,UU,bbb):
         print ("V - na krpici mokrog termometra je voda")
         print ("L - na krpici mokrog termometra je led")     
 
-def wbtcx (TTx,UU,bbb):
+def wbtcx (TTx,UU,bbb): #WBTC, ali se vrijednosti unose bez decimalne točke
     TT = TTx / 10
     if bbb == "/":
         bbbx = float(1013.3)
@@ -324,6 +380,7 @@ def pomoć ():
     print ("MATEMATIKA")
     print ("linearna (a,b)")
     print ("kvadratna (a,b,c)")
+    print ("dnepoz (z1,a1,b1,c1,z2,a2,b2,c2)")
     print ("trokut (a,b,alfa)")
     print (" ")
     print ("* * * ")
@@ -345,10 +402,11 @@ def pomoć ():
     print ("clear ()")
     print ("izl ()")
 
-def preuzmi ():
+def preuzmi (): #preuzimanje uputa za korištenje
     url="https://raw.githubusercontent.com/svenazari/formule/main/procitaj.txt"
     r = requests.get(url, allow_redirects=True)
     open('procitaj.txt', 'wb').write(r.content)
 
-def izl ():
+def izl (): #izlazna funkcija - briše python povijest za sesiju u kojoj je korištena skripta
+    readline.clear_history ()
     exit ()

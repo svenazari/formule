@@ -19,6 +19,12 @@ MATEMATIKA:
     Daje rješenja kvadratne jednadžbe.  
     a, b i c su koeficjenti kvadratne jednadžbe u obliku ax^2+bx+c=0  
     
+  dnepoz (z1,a1,b1,c1,z2,a2,b2,c2)
+    Rješava sustav jednadžbi sa dvije nepoznanice u kojem su jednadžbe formata Zy=Ax^2+Bx+C.
+    Sustavi jednadžbi mogu biti dvije kvadratne, kvadratana i linarna ili dvije linearne.
+    Ako se traži linearna jednadžba, koeficjenci A1 ili A2 moraju biti 0.
+    Ako se traži tješenje sutava kvadratne i linearne jednadžbe, prva jednadžba mora biti kvadratna, a druga linearna (A1 ne smije biti 0, a A2 mora biti 0).
+    
   trokut (a,b,alfa):  
     Računa vrijednost treće stranice trokuta.  
     a i b su stranice trokuta, a alfa je kut između njih izražen u stupnjevima (°).  
