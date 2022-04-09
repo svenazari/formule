@@ -65,7 +65,7 @@ def dnepoz (z1,a1,b1,c1,z2,a2,b2,c2): #rješavanje jednandžbi sa dvije nepoznan
         xr = ((z1 * yr) - c1) / b1 #x rješenje
         yp = str(round(yr,3))
         xp = str(round(xr,3))
-        print ("[" + xp + "," + yp + "]")
+        print ("(" + xp + "," + yp + ")")
     elif a1 != 0 and a2 == 0: #prva jednadžba je kvadratna, a druga je linearna
         #koeficjenti pomoćne jednandžbe
         p = -1 * a1 * z2 #a
@@ -80,7 +80,7 @@ def dnepoz (z1,a1,b1,c1,z2,a2,b2,c2): #rješavanje jednandžbi sa dvije nepoznan
             xs = str(x)
             y = round(((b2 * x) + c2) / z2,3) #y rješenje
             ys = str(y)
-            print ("[" + xs + "," + ys + "]")
+            print ("(" + xs + "," + ys + ")")
         elif q > 0: #diskriminanta je pozitivna - sustav ima dva para rješenja
             qs = math.sqrt(q) #korijen diskriminante
             x1 = round(((-1 * r) + qs) / (2 * p),3) #x1 rješenje
@@ -91,8 +91,8 @@ def dnepoz (z1,a1,b1,c1,z2,a2,b2,c2): #rješavanje jednandžbi sa dvije nepoznan
             y2 = round(((b2 * x2) + c2) / z2,3) #y2 rješenje
             y1s = str(y1)
             y2s = str(y2)
-            print("[" + x1s + "," + y1s + "]")
-            print("[" + x2s + "," + y2s + "]")
+            print("(" + x1s + "," + y1s + ")")
+            print("(" + x2s + "," + y2s + ")")
     else: #obje jednadžbe su kvadratne
         #koeficjenti pomoćne jednadžbe
         p = a1 * z2 - a2 * z1 #a
@@ -107,7 +107,7 @@ def dnepoz (z1,a1,b1,c1,z2,a2,b2,c2): #rješavanje jednandžbi sa dvije nepoznan
             y = round((a2 * math.pow(x,2) + b2 * x + c2) / z2,3) #y rješenje
             xs = str(x)
             ys = str(y)
-            print("[" + xs + "," + ys + "]")
+            print("(" + xs + "," + ys + ")")
         elif q > 0: #diskriminanta je pozitivna - sustav ima dva para rješenja
             qs = math.sqrt(q) #korijen diskriminante
             x1 = round(((-1 * r) + qs) / (2 * p),3) #x1 rješenje
@@ -118,13 +118,83 @@ def dnepoz (z1,a1,b1,c1,z2,a2,b2,c2): #rješavanje jednandžbi sa dvije nepoznan
             y2 = round((a2 * math.pow(x2,2) + b2 * x2 + c2) / z2,3) #y2 rješenje
             y1s = str(y1)
             y2s = str(y2)
-            print("[" + x1s + "," + y1s + "]")
-            print("[" + x2s + "," + y2s + "]")
+            print("(" + x1s + "," + y1s + ")")
+            print("(" + x2s + "," + y2s + ")")
+
+def dnepoz2 (a,b,c,d,e,f,g,h,i): #rješava sustav kvadratne i linearne jednadžbe u formatu Ax^2 + By^2 + Cxy + Dx + Ey + F = 0 i Gy = Hx + I
+    if a == 0 and b == 0 and c == 0:
+        if d == 0 and e == 0 and f != 0:
+            print("To nije sustav jednadžbi!")
+        elif d == 0 and e == 0 and f == 0:
+            if g != 0:
+                print("To nije sustav jednadžbi!")
+            else:
+                linearna(h,i)
+        else:
+            dnepoz(e,0,d,f,g,0,h,i)
+    elif g == 0:
+        print("To nije sustav jednadžbi!") 
+    elif h == 0: #ako je u linearnoj jednadžbi h = 0
+        if a == 0:
+            #definiranje koeficjenata pomoćne jednadžbe
+            p = ((c * i) / g) + d #a
+            r = (b * math.pow(i / g,2)) + (e * (i / g) + f) #b
+            x = str(round((-1 * r) / p,3)) #x rješenje
+            y = str (i / g) #y rješenje
+            print("(" + x + "," + y + ")")
+        else:
+            #definiranje koeficjenata pomoćne jednadžbe
+            p = a #a
+            r = ((c * i) / g) + d #b
+            s = (b * math.pow(i / g,2)) + (e * (i / g) + f) #c
+            #diskriminanta pomoćne jednadžbe
+            q = math.pow(r,2) - 4 * p * s
+            if q < 0: #diskriminanta je negativna - nema rješenja
+                print ("Ovaj sustav jednadžbi nema rješenja!")
+            elif q == 0: #diskriminanta je 0 - postoji samo jedan par rješenja
+                x = str(round((-1 * r) / (2 * p),3)) #x rješenje
+                y = str(i / f) #y rješenje
+                print ("(" + x + "," + y + ")")
+            elif q > 0: #diskriminanta je pozitivna - sustav ima dva rješenja
+                qs = math.sqrt(q) #korijen diskriminante
+                x1 = str(round(((-1 * r) + qs) / (2 * p),3)) #x1 rješenje
+                x2 = str(round(((-1 * r) - qs) / (2 * p),3)) #x2 rješenje
+                y = str(i / g) #y rješenje
+                print("(" + x1 + "," + y + ")")
+                print("(" + x2 + "," + y + ")")
+    else:
+        #definiranje koeficjenata pomoćne jednadžbe
+        p = a + (b * math.pow(h / g,2)) + ((c * h) / g) #a
+        r = ((2 * b * h * i) / math.pow(g,2)) + ((c * i) / g) + d + ((e * h) / g) #b
+        s = (b * math.pow(i / g,2)) + ((e * i) / g) + f #c
+        #diskriminanta pomoćne jednadžbe
+        q = math.pow(r,2) - 4 * p * s
+        if q < 0: #diskriminanta je negativna - nema rješenja
+            print ("Ovaj sustav jednadžbi nema rješenja!")
+        elif q == 0: #diskriminanta je 0 - postoji samo jedan par rješenja
+            x = round((-1 * r) / (2 * p),3) #x rješenje
+            y = round(((h / g) * x) + (i / g),3) #y rješenje
+            xs = str(x)
+            ys = str(y)
+            print("(" + xs + "," + ys + ")")
+        elif q > 0: #diskriminanta je pozitivna - sustav ima dva para rješenja
+            qs = math.sqrt(q) #korijen diskriminante
+            x1 = round(((-1 * r) + qs) / (2 * p),3) #x1 rješenje
+            x2 = round(((-1 * r) - qs) / (2 * p),3) #x2 rješenje
+            x1s = str(x1)
+            x2s = str(x2)
+            y1 = round(((h / g) * x1) + (i / g),3) #y1 rješenje
+            y2 = round(((h / g) * x2) + (i / g),3) #y2 rješenje
+            y1s = str(y1)
+            y2s = str(y2)
+            print("(" + x1s + "," + y1s + ")")
+            print("(" + x2s + "," + y2s + ")")
 
 def trokut (a,b,alfa): #kosinusov poučak - a i b su stranica, a alfa je kut između te dvije stranice (za pitagorin poučak, za vrijednost kuta upisati 90)
     alfar = alfa * math.pi / 180 #pretvaranje stupnjeva u radijane
-    cx = str(round(math.sqrt(math.pow(a,2) + math.pow(b,2) - 2 * a * b * math.cos(alfar)),3)) #kosinusov poučak
-    print ("c = " + cx) #ispis rješenja
+    cx = round(math.sqrt(math.pow(a,2) + math.pow(b,2) - 2 * a * b * math.cos(alfar)),3) #kosinusov poučak
+    cxs = str(cx) #string od cx
+    print ("c = " + cxs) #ispis rješenja
 
 #fizika
 
@@ -184,7 +254,7 @@ def ohm_zakon (I,U,R): #ohmov zakon (I - jakost struje, U - napon struje, R - el
         Rx = str(round(U / I,3))
         print ("R = " + Rx)
 
-#def ziva (ta,lmm,tb):
+#def ziva (ta,lmm,tb): #računanje visine stupca žive u barometru za drugačiju temperaturu
 #    lm = lmm / 1000 #konverzija stupca žive u metre
 #    lx = lm * 0.0000604 * (tb - ta) #promjena dužine (u metrima)
 #    lx2 = lm + lx #nova visina (u metrima)
@@ -381,6 +451,7 @@ def pomoć ():
     print ("linearna (a,b)")
     print ("kvadratna (a,b,c)")
     print ("dnepoz (z1,a1,b1,c1,z2,a2,b2,c2)")
+    print ("dnepoz2 (a,b,c,d,e,f,g,h,i)")
     print ("trokut (a,b,alfa)")
     print (" ")
     print ("* * * ")
@@ -403,10 +474,21 @@ def pomoć ():
     print ("izl ()")
 
 def preuzmi (): #preuzimanje uputa za korištenje
-    url="https://raw.githubusercontent.com/svenazari/formule/main/procitaj.txt"
-    r = requests.get(url, allow_redirects=True)
-    open('procitaj.txt', 'wb').write(r.content)
+    try:
+        url="https://raw.githubusercontent.com/svenazari/formule/main/procitaj.txt"
+        r = requests.get(url, allow_redirects=True)
+        open('procitaj.txt', 'wb').write(r.content)
+    except:
+        print("Preuzimanje nije uspjelo!")
+    else:
+        print("Datoteka je uspješno preuzeta u mapu u kojoj se nalazi skripta.")
 
 def izl (): #izlazna funkcija - briše python povijest za sesiju u kojoj je korištena skripta
     readline.clear_history ()
     exit ()
+
+#DODATI I DORADITI: 
+#- u funkciju trokut dodati da izračunava i veličinu preostala dva kuta
+#- funkcije za računanje rješenja drugih oblika kvadratnih jednadžbi sa dvije nepoznanice 
+#- napraviti da WBTC i WBTCX funkcije pokazuju i drige vrijednosti vezane uz vlagu zraka
+#- naći rješenje za funkciju ziva
