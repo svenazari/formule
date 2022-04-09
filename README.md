@@ -29,8 +29,8 @@ MATEMATIKA:
     Rješava sustav jednadžbi sa dvije nepoznanice od kojih je prva jednadžba kvadratna jednadžba u formatu Ax^2+By^2+Cxy+Dx+Ey+F=0, a druga jednadžba je linearna u formatu Gy=Hx+I.
     
   trokut (a,b,alfa):  
-    Računa vrijednost treće stranice trokuta.  
-    a i b su stranice trokuta, a alfa je kut između njih izražen u stupnjevima (°).  
+    Unosi se vrijednost dvaju stranica i kuta izeđu tih stranica, a funkcija računa vrijednosti treće stranice i preostala dva kuta te ispisuje sve vrijednosti.
+    Kutevi se unose u stupnjevima. 
 
 FIZIKA
   jpg (v,s,t)
