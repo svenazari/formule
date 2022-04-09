@@ -190,11 +190,30 @@ def dnepoz2 (a,b,c,d,e,f,g,h,i): #rješava sustav kvadratne i linearne jednadžb
             print("(" + x1s + "," + y1s + ")")
             print("(" + x2s + "," + y2s + ")")
 
-def trokut (a,b,alfa): #kosinusov poučak - a i b su stranica, a alfa je kut između te dvije stranice (za pitagorin poučak, za vrijednost kuta upisati 90)
-    alfar = alfa * math.pi / 180 #pretvaranje stupnjeva u radijane
-    cx = round(math.sqrt(math.pow(a,2) + math.pow(b,2) - 2 * a * b * math.cos(alfar)),3) #kosinusov poučak
-    cxs = str(cx) #string od cx
-    print ("c = " + cxs) #ispis rješenja
+def trokut (a,b,gama): #kosinusov poučak - a i b su stranica, a gama je kut između te dvije stranice (za pitagorin poučak, za vrijednost kuta upisati 90)
+    gamar = gama * math.pi / 180 #pretvaranje stupnjeva u radijane
+    c = round(math.sqrt(math.pow(a,2) + math.pow(b,2) - 2 * a * b * math.cos(gamar)),3) #kosinusov poučak - za stranicu nasuprot kutu gama (c stranica)
+    cosa = (math.pow(b,2) + math.pow(c,2) - math.pow(a,2)) / (2 * b * c) #kosinus kuta alfa (kut nasuprot a stranici)
+    cosb = (math.pow(a,2) + math.pow(c,2) - math.pow(b,2)) / (2 * a * c) #kosinus kuta beta (kut nasuprot b stranici)
+    alfar = math.acos(cosa) #kut alfa u radianima
+    betar = math.acos(cosb) #kut beta u radianima
+    #pretvaranje kuteva u stupnjeve
+    alfa = round(alfar * 180 / math.pi,3)
+    beta = round(betar * 180 / math.pi,3)
+    #string
+    ap = str(round(a,3))
+    bs = str(round(b,3))
+    cs = str(c)
+    alfas = str(alfa)
+    betas = str(beta)
+    gamas = str(gama)
+    #ispis
+    print ("a = " + ap)
+    print ("b = " + bs)
+    print ("c = " + cs)
+    print ("alfa = " + alfas)
+    print ("beta = " + betas)
+    print ("gama = " + gamas)
 
 #fizika
 
@@ -452,7 +471,7 @@ def pomoć ():
     print ("kvadratna (a,b,c)")
     print ("dnepoz (z1,a1,b1,c1,z2,a2,b2,c2)")
     print ("dnepoz2 (a,b,c,d,e,f,g,h,i)")
-    print ("trokut (a,b,alfa)")
+    print ("trokut (a,b,gama)")
     print (" ")
     print ("* * * ")
     print (" ")
