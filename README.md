@@ -25,6 +25,9 @@ MATEMATIKA:
     Ako se traži linearna jednadžba, koeficjenci A1 ili A2 moraju biti 0.
     Ako se traži tješenje sutava kvadratne i linearne jednadžbe, prva jednadžba mora biti kvadratna, a druga linearna (A1 ne smije biti 0, a A2 mora biti 0).
     
+  dnepoz2 (a,b,c,d,e,f,g,h,i)
+    Rješava sustav jednadžbi sa dvije nepoznanice od kojih je prva jednadžba kvadratna jednadžba u formatu Ax^2+By^2+Cxy+Dx+Ey+F=0, a druga jednadžba je linearna u formatu Gy=Hx+I.
+    
   trokut (a,b,alfa):  
     Računa vrijednost treće stranice trokuta.  
     a i b su stranice trokuta, a alfa je kut između njih izražen u stupnjevima (°).  
