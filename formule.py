@@ -506,8 +506,7 @@ def izl (): #izlazna funkcija - briše python povijest za sesiju u kojoj je kori
     readline.clear_history ()
     exit ()
 
-#DODATI I DORADITI: 
-#- u funkciju trokut dodati da izračunava i veličinu preostala dva kuta
+#DODATI I DORADITI:
 #- funkcije za računanje rješenja drugih oblika kvadratnih jednadžbi sa dvije nepoznanice 
 #- napraviti da WBTC i WBTCX funkcije pokazuju i drige vrijednosti vezane uz vlagu zraka
 #- naći rješenje za funkciju ziva
