@@ -28,9 +28,12 @@ MATEMATIKA:
   dnepoz2 (a,b,c,d,e,f,g,h,i)
     Rješava sustav jednadžbi sa dvije nepoznanice od kojih je prva jednadžba kvadratna jednadžba u formatu Ax^2+By^2+Cxy+Dx+Ey+F=0, a druga jednadžba je linearna u formatu Gy=Hx+I.
     
-  trokut (a,b,alfa):  
+  trokut (a,b,alfa)  
     Unosi se vrijednost dvaju stranica i kuta izeđu tih stranica, a funkcija računa vrijednosti treće stranice i preostala dva kuta te ispisuje sve vrijednosti.
     Kutevi se unose u stupnjevima. 
+  trokut_povrsina (a,b,c)
+    Računa površinu trokuta koristeći heronovu formulu.
+    a, b i c su stranice trokuta.
 
 FIZIKA
   jpg (v,s,t)
