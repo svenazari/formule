@@ -215,6 +215,11 @@ def trokut (a,b,gama): #kosinusov poučak - a i b su stranica, a gama je kut izm
     print ("beta = " + betas)
     print ("gama = " + gamas)
 
+def trokut_povrsina (a,b,c): #računanje površine heronovom formulom (a, b i c su stranice trokuta)
+    s = (a + b + c) / 2 #računanje polovice opsega
+    A = str(round(math.sqrt(s * (s - a) * (s - b) * (s - c)),3)) #računanje površine
+    print ("A = " + A)
+
 #fizika
 
 def jpg (v,s,t): #jednoliko pravocrtno gibanje (v - brzina, s - put, t - vrijeme)
@@ -506,7 +511,7 @@ def izl (): #izlazna funkcija - briše python povijest za sesiju u kojoj je kori
     readline.clear_history ()
     exit ()
 
-#DODATI I DORADITI:
+#DODATI I DORADITI: 
 #- funkcije za računanje rješenja drugih oblika kvadratnih jednadžbi sa dvije nepoznanice 
 #- napraviti da WBTC i WBTCX funkcije pokazuju i drige vrijednosti vezane uz vlagu zraka
 #- naći rješenje za funkciju ziva
