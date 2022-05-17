@@ -31,6 +31,7 @@ MATEMATIKA:
   trokut (a,b,alfa)  
     Unosi se vrijednost dvaju stranica i kuta izeđu tih stranica, a funkcija računa vrijednosti treće stranice i preostala dva kuta te ispisuje sve vrijednosti.
     Kutevi se unose u stupnjevima. 
+    
   trokut_povrsina (a,b,c)
     Računa površinu trokuta koristeći heronovu formulu.
     a, b i c su stranice trokuta.
