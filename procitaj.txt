@@ -55,6 +55,12 @@ FIZIKA
     Za vrijednost koju se traži treba upisati "?" (navodni znakovi su potrebi). NPR., ako se želi izračunati napon, potrebno je upisati ohm_zakon (2,"?",5)
     Korisnik sam mora uskladiti mjerne jedinice.
 
+  time_dilitation_vel (t,v):
+    Računa relativističo smanjivanje prolaska vremena zbog brzine kretanja.
+    t - promjena vremena referentnom sustavu promatrača
+    v - brzina kretanja tijela
+    Izračunata vrijednost je promjena vremena u referentnom sustavu tijela koje se kreće.
+
 METEO
   vlaga (tt,td):
     Funkcija računa relativnu vlagu zraka.
