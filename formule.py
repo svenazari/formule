@@ -277,10 +277,10 @@ def ohm_zakon (I,U,R): #ohmov zakon (I - jakost struje, U - napon struje, R - el
         Rx = str(round(U / I,3))
         print ("R = " + Rx)
 
-def time_dilitation_vel (t,v,c=299792458):
-    if v>c:
+def time_dilitation_vel (t,v,c=299792458): #računanje relativističkog smanjivanja vremena zbog brzine kretanja tijela
+    if v>c: #ako je unesena vrijednost brzine kretanja veća od brzine svjetlosti
         print("Nije moguće kretati se brže od brzine svjetlosti!")
-    elif v==c:
+    elif v==c: #ako je brzina kretanja tijela jednaka brzini svjetlosti
         print("Δt = 0s")
     else:
         gama=1/math.sqrt(1-(math.pow(v,2)/math.pow(c,2))) #lorentzov faktor (gama)
