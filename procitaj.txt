@@ -60,6 +60,7 @@ FIZIKA
     t - promjena vremena referentnom sustavu promatrača
     v - brzina kretanja tijela
     Izračunata vrijednost je promjena vremena u referentnom sustavu tijela koje se kreće.
+    Formula brzinu svjetlosti iskazuje u m/s te stoga i brzina kretanja tijela mora biti u m/s.
 
 METEO
   vlaga (tt,td):
