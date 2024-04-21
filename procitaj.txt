@@ -59,8 +59,8 @@ FIZIKA
     Računa relativističo smanjivanje prolaska vremena zbog brzine kretanja.
     t - promjena vremena referentnom sustavu promatrača
     v - brzina kretanja tijela
-    Izračunata vrijednost je promjena vremena u referentnom sustavu tijela koje se kreće.
-    Formula brzinu svjetlosti iskazuje u m/s te stoga i brzina kretanja tijela mora biti u m/s.
+    Izračunata vrijednost je promjena vremena u referentnom sustavu tijela koje se kreće. Izračunata vrijednost bit će u sekundama (s).
+    Formula brzinu svjetlosti iskazuje u m/s te stoga svemenski interval mora biti u s, a brzina kretanja tijela mora biti u m/s.
 
 METEO
   vlaga (tt,td):
