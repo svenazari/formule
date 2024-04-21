@@ -266,7 +266,6 @@ def jug (a,v,s,t): #jednoliko ubrzano gibanje - vrijednost nepoznanica mogu biti
             t1 = str(round(2 * s / v,3)) #t=2s/v
             print ("t = " + t1)
 
-
 def ohm_zakon (I,U,R): #ohmov zakon (I - jakost struje, U - napon struje, R - električni otpor)
     if I == "?": #računanje jakosti struje
         Ix = str(round(U / R,3))
@@ -278,6 +277,17 @@ def ohm_zakon (I,U,R): #ohmov zakon (I - jakost struje, U - napon struje, R - el
         Rx = str(round(U / I,3))
         print ("R = " + Rx)
 
+def time_dilitation_vel (t,v,c=299792458):
+    if v>c:
+        print("Nije moguće kretati se brže od brzine svjetlosti!")
+    elif v==c:
+        print("Δt = 0s")
+    else:
+        gama=1/math.sqrt(1-(math.pow(v,2)/math.pow(c,2))) #lorentzov faktor (gama)
+        dt=round(t*gama,3)
+        print ("Δt = " + str(dt) + "s")
+
+#meteo
 #def ziva (ta,lmm,tb): #računanje visine stupca žive u barometru za drugačiju temperaturu
 #    lm = lmm / 1000 #konverzija stupca žive u metre
 #    lx = lm * 0.0000604 * (tb - ta) #promjena dužine (u metrima)
@@ -286,7 +296,6 @@ def ohm_zakon (I,U,R): #ohmov zakon (I - jakost struje, U - napon struje, R - el
 #    lmmp = str(lmm2)
 #    print ("Pri novoj temperaturi, visina stupca žive je " + lmmp + " mmHg.")
 
-#meteo
 def vlaga (tt,td): #računanje relativne vlage zraka iz temperature zraka i temperature rosišta
     #konstante
     e = 2.718282
@@ -484,6 +493,7 @@ def pomoć ():
     print ("jpg (v,s,t)")
     print ("jug (a,v,s,t)")
     print ("ohm_zakon (I,U,R)")
+    #print ("time_dilitation_vel (t,v)")
     print (" ")
     print ("* * * ")
     print (" ")
